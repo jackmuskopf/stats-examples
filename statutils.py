@@ -1,6 +1,15 @@
 import numpy as np
 import scipy.stats
 
+def print_summary(result, coefficients=True):
+    # print w/o coefficients
+    d = len(result.params)
+    if coefficients:
+        print(result.summary())
+    else:
+        lines = str(result.summary()).split('\n')
+        print("\n".join(lines[:11] + lines[14+d:]))
+
 def gaussian_filter(x, y, nx, sigma=1, nsigma=2):
     '''
     x: x-axis array of original signal
